@@ -1,0 +1,10 @@
+# Dépendances communes du backend (Python 3.14), sans PyTorch : celui-ci vient de
+# requirements-cpu.txt ou de requirements-gpu.txt, selon l'image construite.
+
+numpy==2.5.3              # signal audio
+soundfile==0.14.0         # décodage WAV, FLAC, OGG, MP3 (libsndfile embarquée)
+av==19.0.2                # décodage WebM, MP4/AAC… (FFmpeg embarqué, aucun paquet système)
+pyyaml==6.0.3             # config.yaml des versions de modèle
+fastapi==0.162.5          # API REST
+uvicorn==0.54.0           # serveur ASGI
+python-multipart==0.0.33  # téléversement multipart/form-data

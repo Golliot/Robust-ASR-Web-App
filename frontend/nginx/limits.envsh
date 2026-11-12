@@ -1,0 +1,13 @@
+#!/bin/sh
+# Dérive les réglages de Nginx de ceux du backend (ASR_*), pour qu'un seul réglage suffise :
+#   NGINX_SERVER_NAMES   hôtes acceptés, ceux du backend
+#   NGINX_MAX_BODY_SIZE  taille maximale d'un envoi : la limite du backend plus 1 Mo d'enveloppe
+#   NGINX_PROXY_TIMEOUT  attente du backend : son délai de transcription plus 60 s
+# Chacun peut aussi être fixé directement.
+
+: "${NGINX_SERVER_NAMES:=${ASR_ALLOWED_HOSTS:-localhost 127.0.0.1}}"
+upload_mb=${ASR_MAX_UPLOAD_MB%%.*}
+: "${NGINX_MAX_BODY_SIZE:=$(( ${upload_mb:-0} + 1 ))m}"
+timeout_s=${ASR_INFERENCE_TIMEOUT_S%%.*}
+: "${NGINX_PROXY_TIMEOUT:=$(( ${timeout_s:-120} + 60 ))s}"
+export NGINX_SERVER_NAMES NGINX_MAX_BODY_SIZE NGINX_PROXY_TIMEOUT

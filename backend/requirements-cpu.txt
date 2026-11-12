@@ -1,0 +1,8 @@
+# Backend sur CPU : PyTorch sans CUDA, depuis l'index CPU de PyTorch (image d'environ 1 Go de moins).
+#   pip install -r backend/requirements-cpu.txt
+
+--extra-index-url https://download.pytorch.org/whl/cpu
+-r requirements-base.txt
+
+torch==2.14.1+cpu
+torchaudio==2.11.1+cpu

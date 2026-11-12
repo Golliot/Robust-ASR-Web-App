@@ -1,0 +1,23 @@
+# Surcharge GPU NVIDIA : PyTorch CUDA 13.0 et réservation d'un GPU (NVIDIA Container Toolkit requis).
+#
+#   docker compose -f docker-compose.yml -f docker-compose.gpu.yml up -d --build
+#
+# Le backend vérifie lui-même que le GPU est utilisable, et passe sur CPU dans le cas contraire
+# (raison affichée dans la vue Système et dans /api/system).
+
+services:
+  backend:
+    build:
+      args:
+        TORCH_VARIANT: gpu
+    image: robust-asr-backend:gpu
+    environment:
+      # Réglage de l'allocateur CUDA repris du notebook : limite la fragmentation de la mémoire.
+      PYTORCH_ALLOC_CONF: expandable_segments:True
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

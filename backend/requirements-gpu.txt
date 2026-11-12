@@ -1,0 +1,10 @@
+# Backend sur GPU NVIDIA : PyTorch pour CUDA 13.0, les versions de l'environnement de recherche.
+# Les roues embarquent le runtime CUDA et cuDNN : seul le pilote vient de l'hôte (version ≥ 580).
+# Ce build couvre les GPU sm_75 (Turing) à sm_120 (Blackwell) ; ailleurs, le backend passe sur CPU.
+#   pip install -r backend/requirements-gpu.txt
+
+--extra-index-url https://download.pytorch.org/whl/cu130
+-r requirements-base.txt
+
+torch==2.14.1+cu130
+torchaudio==2.11.1        # roue Python pure de PyPI : l'index cu130 s'arrête à 2.11.0

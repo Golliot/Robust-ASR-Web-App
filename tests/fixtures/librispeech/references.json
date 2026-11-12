@@ -1,0 +1,37 @@
+[
+  {
+    "id": "1089-134686-0000",
+    "subset": "test-clean",
+    "file": "1089-134686-0000.flac",
+    "frames": 166960,
+    "text": "HE HOPED THERE WOULD BE STEW FOR DINNER TURNIPS AND CARROTS AND BRUISED POTATOES AND FAT MUTTON PIECES TO BE LADLED OUT IN THICK PEPPERED FLOUR FATTENED SAUCE"
+  },
+  {
+    "id": "1089-134686-0001",
+    "subset": "test-clean",
+    "file": "1089-134686-0001.flac",
+    "frames": 52400,
+    "text": "STUFF IT INTO YOU HIS BELLY COUNSELLED HIM"
+  },
+  {
+    "id": "1089-134686-0002",
+    "subset": "test-clean",
+    "file": "1089-134686-0002.flac",
+    "frames": 106000,
+    "text": "AFTER EARLY NIGHTFALL THE YELLOW LAMPS WOULD LIGHT UP HERE AND THERE THE SQUALID QUARTER OF THE BROTHELS"
+  },
+  {
+    "id": "1688-142285-0002",
+    "subset": "test-other",
+    "file": "1688-142285-0002.flac",
+    "frames": 45360,
+    "text": "YOU DON'T MEAN THAT YOU THOUGHT ME SO SILLY"
+  },
+  {
+    "id": "1688-142285-0003",
+    "subset": "test-other",
+    "file": "1688-142285-0003.flac",
+    "frames": 80960,
+    "text": "I REALLY LIKED THAT ACCOUNT OF HIMSELF BETTER THAN ANYTHING ELSE HE SAID"
+  }
+]

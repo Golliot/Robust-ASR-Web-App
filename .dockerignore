@@ -1,0 +1,9 @@
+# Contexte de construction du backend (racine du dépôt) : seul le code d'inférence est envoyé au
+# démon Docker. Les données, les checkpoints, les modèles et les environnements virtuels (plusieurs
+# gigaoctets) n'entrent jamais dans une image.
+*
+!backend/
+!src/
+src/augment/
+**/__pycache__/
+**/*.py[cod]

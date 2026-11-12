@@ -1,0 +1,9 @@
+{
+  "name": "robust-asr-e2e",
+  "private": true,
+  "type": "module",
+  "description": "Test de bout en bout de l'interface, dans Chromium (Playwright).",
+  "devDependencies": {
+    "playwright": "1.65.0"
+  }
+}

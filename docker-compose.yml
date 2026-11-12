@@ -1,0 +1,72 @@
+# Robust ASR : application web locale, configuration CPU (par défaut).
+#
+#   docker/start.sh                       choisit seul le GPU s'il est utilisable, sinon le CPU
+#   docker compose up -d --build          force la configuration CPU
+#   docker compose -f docker-compose.yml -f docker-compose.gpu.yml up -d --build   force le GPU
+#
+# Réglages : variables ASR_* d'un fichier .env à la racine (voir .env.example).
+# L'interface est servie sur http://localhost:8080, et seulement sur l'interface locale de la machine.
+
+name: robust-asr
+
+x-hardening: &hardening
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: ["no-new-privileges:true"]
+  restart: unless-stopped
+
+services:
+  backend:
+    <<: *hardening
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+      args:
+        TORCH_VARIANT: cpu
+    image: robust-asr-backend:cpu
+    environment:
+      ASR_MODEL_VERSION: ${ASR_MODEL_VERSION:-v1}
+      ASR_DEVICE: ${ASR_DEVICE:-auto}
+      ASR_MAX_UPLOAD_MB: ${ASR_MAX_UPLOAD_MB:-25}
+      ASR_MAX_DURATION_S: ${ASR_MAX_DURATION_S:-}
+      ASR_INFERENCE_TIMEOUT_S: ${ASR_INFERENCE_TIMEOUT_S:-120}
+      ASR_NUM_THREADS: ${ASR_NUM_THREADS:-}
+      ASR_ALLOWED_HOSTS: ${ASR_ALLOWED_HOSTS:-localhost 127.0.0.1}
+      ASR_LOG_LEVEL: ${ASR_LOG_LEVEL:-INFO}
+      ASR_ENABLE_DOCS: ${ASR_ENABLE_DOCS:-true}
+    volumes:
+      # Versions de modèle (checkpoint, CMVN, config.yaml), hors de l'image et en lecture seule.
+      - type: bind
+        source: ${ASR_MODELS_HOST_DIR:-./models}
+        target: /models
+        read_only: true
+    tmpfs:
+      - /tmp:size=512m
+    # Aucun port publié : le backend n'est joignable que par le frontend, sur le réseau interne.
+    networks: [internal]
+    stop_grace_period: 10s
+
+  frontend:
+    <<: *hardening
+    build:
+      context: frontend
+    image: robust-asr-frontend
+    environment:
+      ASR_ALLOWED_HOSTS: ${ASR_ALLOWED_HOSTS:-localhost 127.0.0.1}
+      ASR_MAX_UPLOAD_MB: ${ASR_MAX_UPLOAD_MB:-25}
+      ASR_INFERENCE_TIMEOUT_S: ${ASR_INFERENCE_TIMEOUT_S:-120}
+    ports:
+      - "${ASR_BIND_ADDRESS:-127.0.0.1}:${ASR_PORT:-8080}:8080"
+    tmpfs:
+      - /tmp:size=64m
+      - /etc/nginx/conf.d:size=1m,uid=101,gid=101
+    depends_on:
+      - backend
+    networks: [edge, internal]
+
+networks:
+  # Réseau des deux conteneurs, sans accès à Internet ni au réseau local.
+  internal:
+    internal: true
+  # Réseau du port publié du frontend.
+  edge: {}

@@ -41,3 +41,12 @@ checkpoints/*
 *.swp
 .DS_Store
 Thumbs.db
+
+# --- Application web ----------------------------------------------------------
+# Poids des versions de modèle (environ 100 Mo chacun), produits par scripts/export_model.py :
+# seul config.yaml, qui décrit la version et les empreintes de ses fichiers, est versionné.
+models/*/*.pt
+models/.*/
+frontend/node_modules/
+frontend/dist/
+.env
