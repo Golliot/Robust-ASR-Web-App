@@ -1,0 +1,43 @@
+# --- Python ---------------------------------------------------------------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# --- Données --------------------------------------------------------------
+# Corpus audio (environ 80 Go) : retéléchargés par download_librispeech.py et
+# download_noise.py, voir le README. Chacun garde sa propre licence et n'est
+# pas redistribué ici.
+data/*
+!data/manifests/
+data/manifests/*
+
+# Versionnés : le partage MUSAN et le jeu de validation figé. Ils sont légers
+# (4 Mo), en chemins relatifs, et garantissent que tout le monde évalue sur
+# exactement les mêmes dégradations.
+!data/manifests/musan/
+!data/manifests/val/
+
+# Non versionnés, car régénérés par le notebook : manifestes LibriSpeech
+# (90 Mo) et statistiques CMVN.
+#   data/manifests/<sous-ensemble>.json, data/manifests/cmvn.pt
+
+# --- Checkpoints ------------------------------------------------------------
+# Environ 300 Mo chacun, au-delà de la limite de 100 Mo de GitHub : à publier,
+# si besoin, en pièce jointe d'une release. Seuls les résultats de test sont
+# versionnés.
+checkpoints/*
+!checkpoints/test_results.json
+!checkpoints/test_results.md
+
+# --- Éditeurs et système ---------------------------------------------------
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db

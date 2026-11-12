@@ -1,0 +1,20 @@
+# Dépendances de Robust-ASR, développé et testé avec Python 3.14.4.
+#
+# PyTorch avec CUDA s'installe depuis l'index de PyTorch (ici CUDA 13.0, testé
+# sur une RTX 5060 Ti) :
+#   uv pip install -r requirements.txt --index-url https://download.pytorch.org/whl/cu130 \
+#       --extra-index-url https://pypi.org/simple
+# Sans GPU, une installation simple donne la version CPU, mais l'entraînement
+# devient impraticable.
+
+torch==2.14.1          # modèle, entraînement, beam search
+torchaudio==2.11.1     # Log-Mel, rééchantillonnage, énumération de LibriSpeech
+soundfile==0.14.0      # lecture audio (WAV, FLAC)
+numpy==2.5.3
+jiwer==4.0.0           # WER
+rapidfuzz==3.14.6      # correction d'erreurs optionnelle (distance d'édition)
+matplotlib==3.11.2     # courbes d'entraînement
+tqdm==4.70.1           # barres de progression
+
+ipykernel==7.4.0       # exécution du notebook
+pytest==9.2.0          # tests de src/ et des scripts

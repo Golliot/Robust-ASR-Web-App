@@ -1,0 +1,6 @@
+{
+  "musan_root": "data/musan",
+  "val_ratio": 0.2,
+  "seed": 42,
+  "keep_librivox": false
+}

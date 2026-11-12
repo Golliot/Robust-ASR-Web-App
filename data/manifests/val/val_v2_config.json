@@ -1,0 +1,119 @@
+{
+  "spec": {
+    "version": "val_v2",
+    "seed": 1234,
+    "subsets": [
+      "dev-clean",
+      "dev-other"
+    ],
+    "p_noise": 0.6,
+    "p_rir": 0.3,
+    "duration_exponent": 0.5,
+    "rir_room_fraction": 0.1,
+    "categories": [
+      {
+        "name": "noise",
+        "probability": 0.4,
+        "snrs_db": [
+          0,
+          5,
+          10
+        ],
+        "training_snr_db": [
+          0.0,
+          15.0
+        ]
+      },
+      {
+        "name": "music",
+        "probability": 0.3,
+        "snrs_db": [
+          5,
+          10,
+          15
+        ],
+        "training_snr_db": [
+          5.0,
+          15.0
+        ]
+      },
+      {
+        "name": "babble",
+        "probability": 0.3,
+        "snrs_db": [
+          13,
+          17,
+          20
+        ],
+        "training_snr_db": [
+          13.0,
+          20.0
+        ]
+      }
+    ]
+  },
+  "sha256": "95151a8912b7420edd3f0f6cb54c5b6be5402d8b0ce24f3060f2a18c21e95370",
+  "musan_val_sha256": "93f4dc386f667fc47a7aa5f62f5de70e4cc23f2f57a5be0b9021e8c5e356e792",
+  "rir_rooms": [
+    "simulated_rirs_16k/largeroom/Room004",
+    "simulated_rirs_16k/largeroom/Room029",
+    "simulated_rirs_16k/largeroom/Room033",
+    "simulated_rirs_16k/largeroom/Room049",
+    "simulated_rirs_16k/largeroom/Room079",
+    "simulated_rirs_16k/largeroom/Room098",
+    "simulated_rirs_16k/largeroom/Room106",
+    "simulated_rirs_16k/largeroom/Room112",
+    "simulated_rirs_16k/largeroom/Room118",
+    "simulated_rirs_16k/largeroom/Room133",
+    "simulated_rirs_16k/largeroom/Room135",
+    "simulated_rirs_16k/largeroom/Room144",
+    "simulated_rirs_16k/largeroom/Room153",
+    "simulated_rirs_16k/largeroom/Room164",
+    "simulated_rirs_16k/largeroom/Room172",
+    "simulated_rirs_16k/largeroom/Room183",
+    "simulated_rirs_16k/largeroom/Room185",
+    "simulated_rirs_16k/largeroom/Room186",
+    "simulated_rirs_16k/largeroom/Room198",
+    "simulated_rirs_16k/mediumroom/Room006",
+    "simulated_rirs_16k/mediumroom/Room025",
+    "simulated_rirs_16k/mediumroom/Room034",
+    "simulated_rirs_16k/mediumroom/Room049",
+    "simulated_rirs_16k/mediumroom/Room051",
+    "simulated_rirs_16k/mediumroom/Room059",
+    "simulated_rirs_16k/mediumroom/Room061",
+    "simulated_rirs_16k/mediumroom/Room065",
+    "simulated_rirs_16k/mediumroom/Room070",
+    "simulated_rirs_16k/mediumroom/Room079",
+    "simulated_rirs_16k/mediumroom/Room089",
+    "simulated_rirs_16k/mediumroom/Room124",
+    "simulated_rirs_16k/mediumroom/Room127",
+    "simulated_rirs_16k/mediumroom/Room145",
+    "simulated_rirs_16k/mediumroom/Room156",
+    "simulated_rirs_16k/mediumroom/Room159",
+    "simulated_rirs_16k/mediumroom/Room169",
+    "simulated_rirs_16k/mediumroom/Room175",
+    "simulated_rirs_16k/mediumroom/Room178",
+    "simulated_rirs_16k/mediumroom/Room183",
+    "simulated_rirs_16k/mediumroom/Room192",
+    "simulated_rirs_16k/mediumroom/Room196",
+    "simulated_rirs_16k/smallroom/Room010",
+    "simulated_rirs_16k/smallroom/Room012",
+    "simulated_rirs_16k/smallroom/Room034",
+    "simulated_rirs_16k/smallroom/Room037",
+    "simulated_rirs_16k/smallroom/Room041",
+    "simulated_rirs_16k/smallroom/Room060",
+    "simulated_rirs_16k/smallroom/Room063",
+    "simulated_rirs_16k/smallroom/Room069",
+    "simulated_rirs_16k/smallroom/Room082",
+    "simulated_rirs_16k/smallroom/Room087",
+    "simulated_rirs_16k/smallroom/Room111",
+    "simulated_rirs_16k/smallroom/Room120",
+    "simulated_rirs_16k/smallroom/Room121",
+    "simulated_rirs_16k/smallroom/Room127",
+    "simulated_rirs_16k/smallroom/Room148",
+    "simulated_rirs_16k/smallroom/Room155",
+    "simulated_rirs_16k/smallroom/Room163",
+    "simulated_rirs_16k/smallroom/Room170",
+    "simulated_rirs_16k/smallroom/Room191"
+  ]
+}
